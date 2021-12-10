@@ -1,0 +1,76 @@
+html{
+    background-color: rgb(4, 4, 4);
+    color: white;
+}
+
+
+.gif{
+    position: absolute;
+    border: none;
+    left: 680px;
+    top: 140px;
+}
+
+
+
+.barra{
+    position: absolute;
+    top: 500px;
+    left: 550px;
+    margin: 8px;
+    width: 500px;
+    height: 7px;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 5px ;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+progress{
+    height: 7px;
+    width: 0%;
+    background-color: rgba(254, 240, 255, 0.919);
+}
+
+.ponto{
+    width: 20px;
+    height: 20px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50px;
+    margin-left: -10px;
+}
+
+.player{
+    width: 500px;
+    height: 500px;
+}
+
+.play, .pause{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    left: 776px;
+    top: 570px;
+}
+
+.pause{
+    display: none;
+}
+
+.inicio, .fim{
+    color: rgb(4, 4, 4);
+    display: none;
+}
+
+
+
+.relogio{
+    position: absolute;
+    font-size: 450%;
+    left: 520px; 
+	top: 418px;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+}

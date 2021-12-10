@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="imagex/png" href="Imagens/clock.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@200&family=Orbitron&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="Style.css">
+
+    <title>Lofi Radio</title>
+</head>
+<body>
+    <div class="gif">
+    <img src="http://pa1.narvii.com/6532/642e1e45e64604bd30a71606679db81d33665aa3_00.gif"></img>
+    </div>
+    <div class="relogio">
+        <div class="display">00:00:00</div>
+    </div>
+
+
+</div>
+
+
+<div class="duracao">
+  <div class="barra">
+    <progress value="0" max="1"></progress>
+    <div class="ponto"></div>
+  </div>
+
+  <div class="tempo">
+    <p class="inicio">0:00</p>
+    <p class="fim">3:30</p>
+  </div>
+
+  
+</div>
+<div class="player">
+  <img class="play" src="imagens/playy.png">
+  <img class="pause" src="imagens/pausee.png">
+</div>
+<audio>
+  <source src="imagens/3am.mp3">
+</audio>
+</div>
+
+
+    <script>
+        let musica = document.querySelector('audio');
+        
+
+        document.querySelector('.play').addEventListener('click', tocarmusica);
+
+        document.querySelector('.pause').addEventListener('click', pararmusica);
+
+        musica.addEventListener('timeupdate', atualizarbarra);
+
+        let duracaoMusica = document.querySelector('.fim');
+
+        function tocarmusica()
+        {
+          musica.play();
+          document.querySelector('.pause').style.display = 'block';
+          document.querySelector('.play').style.display = 'none';
+          duracaoMusica.textContent = segundosParaMinutos(Math.floor(musica.duration));
+         
+        }
+
+        function pararmusica()
+        {
+          musica.pause();
+          document.querySelector('.pause').style.display = 'none';
+          document.querySelector('.play').style.display = 'block';
+        }
+
+        function atualizarbarra()
+        {
+          let barra = document.querySelector('progress');
+          barra.style.width = Math.floor((musica.currentTime / musica.duration) * 100) + '%';
+          let tempoDecorrido = document.querySelector('.inicio');
+          tempoDecorrido.textContent = segundosParaMinutos(Math.floor(musica.currentTime));
+        }
+
+        function segundosParaMinutos(segundos)
+        {
+          let campoMinutos = Math.floor(segundos / 60);
+          let campoSegundos = segundos % 60;
+          if (campoSegundos < 10)
+          {
+            campoSegundos = '0'+ campoSegundos;
+          }
+
+          return campoMinutos+':'+campoSegundos;
+        }
+    </script>
+
+
+    <script>
+        function atualizarTempo(){
+    var display = document.querySelector('.display');
+
+    var agora = new Date();
+    
+    var horario = corrigirHorario(agora.getHours()) + ':' + corrigirHorario(agora.getMinutes()) + ':' + corrigirHorario(agora.getSeconds());
+    
+    display.textContent = horario;
+}
+
+function corrigirHorario(numero){
+    if (numero < 10) {
+        numero = '0' + numero;
+    }
+    return numero;
+}
+
+atualizarTempo();
+setInterval(atualizarTempo, 1000);
+    </script>
+</body>
+</html>
